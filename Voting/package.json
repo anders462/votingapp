@@ -1,0 +1,42 @@
+{
+  "name": "votingapp",
+  "version": "1.0.0",
+  "description": "app that lets you create custom polls",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anders462/votingapp.git"
+  },
+  "keywords": [
+    "poll",
+    "voting"
+  ],
+  "author": "Anders Bengtsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anders462/votingapp/issues"
+  },
+  "homepage": "https://github.com/anders462/votingapp#readme",
+  "dependencies": {
+    "basic-auth": "^1.0.3",
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "jade": "^1.11.0",
+    "kerberos": "0.0.17",
+    "mongodb": "^2.1.4",
+    "mongoose": "^4.3.6",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0"
+  }
+}
