@@ -6,13 +6,14 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    LocalStrategy = require('passport-local').Strategy,
     morgan = require('morgan'),
     path = require('path'),
-    routes = require(process.cwd() + '/routes/index.js');
+    routes = require(process.cwd() + '/routes/index.js'),
+    passportSetUp = require('./config/passport.js');
 
     //create express app
     var app = express();
+    passportSetUp(passport);
     app.use('client', express.static(__dirname + '/client'));
     app.use(favicon(__dirname + '/client/favicon.ico'));
     app.use(morgan('dev'));
@@ -32,12 +33,6 @@ var express = require('express'),
     app.use(passport.session());
     //app.use('/', routes);
 
-    // passport config
-    var Account = require(process.cwd() + '/models/account.js');
-    passport.use(new LocalStrategy(Account.authenticate()));
-    passport.serializeUser(Account.serializeUser());
-    passport.deserializeUser(Account.deserializeUser());
-
     //set port to env.Port and 3000 as fallback
     app.set('port', (process.env.PORT || 3000));
     // connect with mongo db
@@ -48,7 +43,7 @@ var express = require('express'),
       console.log('MongoDB successfully connected on port 27017.');
     });
 
-    routes(app,passport,Account);
+    routes(app,passport);
 
     app.listen(app.get('port'), function(){
       console.log("server is running on port " + app.get('port') + "...");

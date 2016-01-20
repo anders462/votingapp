@@ -1,6 +1,8 @@
 "use strict"
+var Account = require(process.cwd() + '/models/account.js');
 
-module.exports = function(app,passport,Account) {
+
+module.exports = function(app,passport) {
 
   //main route to serve index.html
     app.route('/')
