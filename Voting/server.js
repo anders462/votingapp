@@ -14,8 +14,11 @@ var express = require('express'),
     //create express app
     var app = express();
     passportSetUp(passport);
-    app.use('client', express.static(__dirname + '/client'));
-    app.use(favicon(__dirname + '/client/favicon.ico'));
+    //set public and bower directory paths relative to server root
+    app.use('/public/bower_components',  express.static(process.cwd() + '/public/bower_components'));
+    //app.use('/public',  express.static(process.cwd() + '/public'));
+    app.use(express.static('public'));
+    app.use(favicon(__dirname + '/public/favicon.ico'));
     app.use(morgan('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
