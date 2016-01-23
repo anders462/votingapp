@@ -11,28 +11,21 @@
 .row-footer {
   margin: 0px auto;
   padding: 20px 0px;
-  background-color: #AfAfAf;
+  background-color: #;
 }
 .jumbotron {
   margin: 0px auto;
   padding: 70px 30px;
-  background: #7986CB;
+  background: #CDD422;
   color: floralwhite;
 }
-.carousel {
-  background: #1a237e;
+
+.logout-page, .login-page, .register-page {
+  padding-top: 150px;
 }
-.carousel .item {
-  height: 300px;
-}
-.carousel .item img {
-  left: 0;
-  min-height: 300px;
-  position: absolute;
-  top: 0;
-}
+
 .navbar-inverse {
-  background: #303f9f;
+  background: grey;
   color: #ffffff;
 }
 .navbar-inverse .navbar-nav > .active > a {
@@ -85,12 +78,4 @@ body {
   border-left: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
   padding: 10px;
-}
-.affix {
-  top: 100px;
-}
-#carouselButtons {
-  bottom: 0px;
-  position: absolute;
-  right: 0px;
 }

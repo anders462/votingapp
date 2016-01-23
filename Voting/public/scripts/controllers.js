@@ -5,13 +5,20 @@ angular.module('votingApp')
 
         .controller('IndexController', ['$scope', function($scope) {
 
+/*
+          $scope.newPoll = function () {
+              console.log("click");
+              $location.path('/newpoll');
+            });
 
+        };
+*/
 
         }])
 
-        .controller('Page1Controller', ['$scope', '$location', 'AuthService',function ($scope, $location, AuthService) {
+        .controller('PollController', ['$scope', '$location', 'AuthService',function ($scope, $location, AuthService) {
 
-            
+
 
         }])
 

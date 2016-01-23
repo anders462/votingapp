@@ -76,12 +76,12 @@ angular.module('votingApp', ['ui.router','ngResource'])
                 }
 
             })
-            .state('app.page1', {
+            .state('app.poll', {
                 url: 'page1',
                 views: {
                     'content@': {
-                        templateUrl : '/views/page1.html',
-                        controller  : 'Page1Controller'
+                        templateUrl : '/views/poll.html',
+                        controller  : 'PollController'
                         }
                     },
                 data: {
