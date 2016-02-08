@@ -141,7 +141,6 @@ angular.module('votingApp')
 
     $scope.votePoll = function(){
       console.log($scope.optionNumber);
-      if (!scope.voted){
       PollFactory.addCount(parseInt($stateParams.id,10),{"option": $scope.optionNumber})
          .then(
                 function(response){
@@ -155,7 +154,6 @@ angular.module('votingApp')
                   console.log("Error: "+response.status + " " + response.statusText);
                 }
          );
-       }
       };
 
       $scope.addOption = function(){
