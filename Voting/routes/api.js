@@ -101,11 +101,12 @@ module.exports = function(app,passport) {
      //increment counter on poll option. For all users Authenticated and Not Authenticated
      .put(function(req,res){
        console.log(req.body.option);
+
        Poll.findOneAndUpdate({id: req.params.id, 'options.no': req.body.option},{$inc: {'options.$.count': 1}}, {new: true}, function(err,poll){
          if (err) {
            throw(err);
          }
-         console.log(poll.options);
+         //console.log(poll.options);
          res.status(200).json(poll);
          //poll[0].options[req.body.option].count +=1;
 
