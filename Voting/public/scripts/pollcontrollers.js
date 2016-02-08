@@ -80,6 +80,7 @@ angular.module('votingApp')
       $scope.newOptionForm = {};
       $scope.pollOption ={}
       $scope.isAuth =false;
+      $scope.voted = false;
 
       function checkLoggedIn() {
         AuthService.isLoggedIn()
@@ -137,8 +138,10 @@ angular.module('votingApp')
     );
 
     $scope.optionNumber = 1;
+
     $scope.votePoll = function(){
       console.log($scope.optionNumber);
+      if (!scope.voted){
       PollFactory.addCount(parseInt($stateParams.id,10),{"option": $scope.optionNumber})
          .then(
                 function(response){
@@ -146,11 +149,13 @@ angular.module('votingApp')
                   console.log(response.data);
                   $scope.vote = response.data;
                   $scope.updateChart();
+                  $scope.voted = true;
                 },
                 function(response){
                   console.log("Error: "+response.status + " " + response.statusText);
                 }
          );
+       }
       };
 
       $scope.addOption = function(){

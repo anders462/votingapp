@@ -14,7 +14,7 @@
             <div class="radio radio-form" ng-repeat="option in vote.options track by $index">
               <label><input type="radio" name="optionNumber" ng-model="$parent.optionNumber" ng-value="{{option.no}}"/> {{option.optionName}}
             </div>
-            <button type="submit" class="btn btn-primary btn-md">Vote</button></br></br>
+            <button ng-if="!voted" type="submit" class="btn btn-primary btn-md">Vote</button></br></br>
         </form>
             <div ng-if="isAuth">
               <form name="form" ng-submit='newOption()'>
