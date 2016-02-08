@@ -15,7 +15,6 @@ this.addPoll = function(newPoll) {
 };
 
 this.getPolls = function (id){
-  console.log(baseUrl + '/' + id);
   return $http.get(baseUrl + '/' + id);
 }
 

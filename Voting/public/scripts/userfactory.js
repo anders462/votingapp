@@ -5,8 +5,8 @@
 'use strict';
 
 angular.module('votingApp')
-.constant("baseUrl", "https://anders-voteup.herokuapp.com")
-.factory('AuthService', ['$q', '$timeout', '$http','baseUrl', function ($q, $timeout, $http,baseUrl) {
+.constant("authUrl", "https://anders-voteup.herokuapp.com")
+.factory('AuthService', ['$q', '$timeout', '$http','authUrl', function ($q, $timeout, $http,authUrl) {
 
   //https://anders-voteup.herokuapp.com/
 
@@ -16,7 +16,7 @@ angular.module('votingApp')
     var deferred = $q.defer();
 
     // send a get request to the server
-    $http.get(baseUrl + '/auth')
+    $http.get(authUrl + '/auth')
       // handle success
       .success(function (data) {
         console.log("auth?: " + data.auth);
@@ -38,7 +38,7 @@ function login(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post(baseUrl + '/login', {username: username, password: password})
+  $http.post(authUrl + '/login', {username: username, password: password})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
@@ -64,7 +64,7 @@ function logout() {
   var deferred = $q.defer();
 
   // send a get request to the server
-  $http.get(baseUrl + '/logout')
+  $http.get(authUrl + '/logout')
     // handle success
     .success(function (data) {
       deferred.resolve();
@@ -85,7 +85,7 @@ function register(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post(baseUrl + '/register', {username: username, password: password})
+  $http.post(authUrl + '/register', {username: username, password: password})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
@@ -108,7 +108,7 @@ function updatePassword(oldPassword,newPassword){
   var deferred = $q.defer();
 
   // send a put/update request to the server
-  $http.put(baseUrl + '/update', {oldPassword: oldPassword, newPassword: newPassword})
+  $http.put(authUrl + '/update', {oldPassword: oldPassword, newPassword: newPassword})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
