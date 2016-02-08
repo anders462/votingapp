@@ -1,14 +1,12 @@
 
 
+
 (function(){
 
 'use strict';
 
 angular.module('votingApp')
-.constant("authUrl", "https://anders-voteup.herokuapp.com")
-.factory('AuthService', ['$q', '$timeout', '$http','authUrl', function ($q, $timeout, $http,authUrl) {
-
-  //https://anders-voteup.herokuapp.com/
+.factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
 
 
   function isLoggedIn() {
@@ -16,7 +14,7 @@ angular.module('votingApp')
     var deferred = $q.defer();
 
     // send a get request to the server
-    $http.get(authUrl + '/auth')
+    $http.get('https://anders-voteup.herokuapp.com/auth')
       // handle success
       .success(function (data) {
         console.log("auth?: " + data.auth);
@@ -38,7 +36,7 @@ function login(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post(authUrl + '/login', {username: username, password: password})
+  $http.post('https://anders-voteup.herokuapp.com/login', {username: username, password: password})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
@@ -64,7 +62,7 @@ function logout() {
   var deferred = $q.defer();
 
   // send a get request to the server
-  $http.get(authUrl + '/logout')
+  $http.get('https://anders-voteup.herokuapp.com/logout')
     // handle success
     .success(function (data) {
       deferred.resolve();
@@ -85,7 +83,7 @@ function register(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post(authUrl + '/register', {username: username, password: password})
+  $http.post('https://anders-voteup.herokuapp.com/register', {username: username, password: password})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
@@ -108,7 +106,7 @@ function updatePassword(oldPassword,newPassword){
   var deferred = $q.defer();
 
   // send a put/update request to the server
-  $http.put(authUrl + '/update', {oldPassword: oldPassword, newPassword: newPassword})
+  $http.put('https://anders-voteup.herokuapp.com/update', {oldPassword: oldPassword, newPassword: newPassword})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
