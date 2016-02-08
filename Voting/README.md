@@ -21,4 +21,4 @@ Application uses a Node.js/Express.js backend and Angular.js SPA frontend. Passp
 
 
 
-Live URL: https://anders-votup.herokuapp.com
+Live URL: https://anders-voteup.herokuapp.com
