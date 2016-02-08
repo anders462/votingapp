@@ -37,7 +37,7 @@ var express = require('express'),
     //set port to env.Port and 3000 as fallback
     app.set('port', (process.env.PORT || 8000));
     // connect with mongo db
-    mongoose.connect("mongodb://localhost:27017/votingapp");
+    mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost:27017/votingapp");
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'Database failed to connect!'));
     db.once('open', function() {
