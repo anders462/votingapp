@@ -15,7 +15,7 @@
           $scope.data =[];
           $scope.labels = [];
           $scope.vote = {};
-          $scope.featured = 1;
+          $scope.featured = 2;
 
 
           $scope.updateChart = function(){
