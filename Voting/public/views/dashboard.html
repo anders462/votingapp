@@ -1,0 +1,28 @@
+<h2 class="text-center">{{currentUser}} Dashboard</h2>
+<div class="container">
+<div class="row">
+  <div class="col-xs-12 col-sm-3">
+ </div>
+      <div class="col-xs-12 col-sm-6">
+        <h3 class="text-center" >My Polls</h3>
+        <h4 ng-if="noPolls" style="padding:30px;">Looks like you don't have any polls yet! Click "New Poll" to get started"</h4>
+        <table class="table">
+          <tr>
+             <th>Poll Name</th>
+             <th>Delete</th>
+          </tr>
+          <tr ng-repeat="poll in mypolls" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+             <td><a href="#vote/{{poll.id}}" class="btn btn-default btn-lg poll-btn">{{poll.pollname | maxLength:max }}</a></td>
+             <td><a type="button" class="btn btn-danger" ng-click="deletePoll(poll.id)">Delete</a></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+       </div>
+    </div>
+ </div>
+  <div class="row text-center">
+    <a ui-sref="app.newpoll" class="btn btn-success btn-lg">New Poll</a>
+    <a ui-sref="app.allpolls" class="btn btn-primary btn-lg">All Polls</a>
+  </div>
+ </div>

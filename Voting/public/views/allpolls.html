@@ -1,0 +1,29 @@
+<h2 class="text-center">Make Your Voice Heard!</h2>
+<div class="container">
+<div class="row">
+  <div class="col-xs-12 col-sm-3">
+ </div>
+      <div class="col-xs-12 col-sm-6">
+        <h3 class="text-center" >All Polls</h3>
+        <table class="table">
+          <tr>
+             <th>Poll Name</th>
+             <th>Posted By</th>
+             <th>Vote</th>
+          </tr>
+          <tr ng-repeat="poll in mypolls">
+             <td><a href="#vote/{{poll.id}}" class="btn btn-default btn-lg poll-btn">{{poll.pollname | maxLength:max }}</a></td>
+             <td>{{poll.username}}</td>
+             <td><a href="#vote/{{poll.id}} type="button" class="btn btn-primary">Vote</a></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+       </div>
+    </div>
+ </div>
+  <div class="row text-center">
+    <a ui-sref="app.newpoll" class="btn btn-success btn-lg">New Poll</a>
+    <a ui-sref="app.dashboard" class="btn btn-warning btn-lg">Dashboard</a>
+  </div>
+ </div>

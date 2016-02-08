@@ -1,4 +1,4 @@
-<nav class="navbar-inverse navbar-right navbar-fixed-top" role="navigation">
+<nav class="navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="#/"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav nav-text" >
               <!--home-->
                 <li><a ui-sref="app">
                     <span class="glyphicon glyphicon-home"
@@ -20,13 +20,17 @@
                     <span class="glyphicon glyphicon-log-in"
                      aria-hidden="true"></span> Login</a></li>
                      <!--login-->
-                    <li><a ui-sref="app.logout">
-                    <span class="glyphicon glyphicon-info-sign"
+                 <li><a ui-sref="app.logout">
+                    <span class="glyphicon glyphicon-log-out"
                     aria-hidden="true"></span> Logout</a></li>
                                <!--settings-->
-                 <li><a ui-sref="app.register">
+                 <li><a ui-sref="app.settings">
                    <span class="glyphicon glyphicon-cog"
-                    aria-hidden="true"></span></span> Register</a></li>
+                    aria-hidden="true"></span></span> Settings</a></li>
+                    <li><a ui-sref="app.register">Sign Up!</a></li>
+                  <li><a ui-sref="app.dashboard">
+                    <span class="glyphicon glyphicon-user"
+                    aria-hidden="true"></span></span> Hello {{currentUser}}!</a></li>
 
             </ul>
         </div>
@@ -34,5 +38,5 @@
 </nav>
 
 <div class="jumbotron">
-    <h1>VoteUp<small>&nbspYour vote counts!</small></h1>
+    <h1>VoteUp<small id="subTitle">&nbspYour vote counts!</small></h1>
 </div>

@@ -1,4 +1,4 @@
-// passport config
+// passport configurations for LocalStrategy
 'use strict'
 var Account = require(process.cwd() + '/models/account.js'),
     LocalStrategy = require('passport-local').Strategy;

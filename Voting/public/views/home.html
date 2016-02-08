@@ -1,17 +1,64 @@
 <div class="container">
-<div class="row text-center register-page">
-<div class="col-xs-12 col-sm-4"></div>
-<div class="container">
-  <div class="row text-center logout-page">
+
+  <div class="row text-center home-main">
     <div class="col-xs-12 col-sm-4">
+      <img src="../images/flash.png" alt="" />
+      <h2> Instant results</h2>
+      <p>Easy to read graphs and tables give you the power to understand your data. Better than mind reading!</p>
     </div>
-    <div class="col-xs-12 col-sm-4" ng-controller="IndexController">
-      <a ui-sref="app.poll" class="btn btn-primary btn-lg btn-block">Create New Poll</a>
+  <div class="col-xs-12 col-sm-4">
+    <img src="../images/responsive-design.png" alt="" />
+    <h2> Use it anywhere</h2>
+    <p>VoteUp is designed to be responsive. You can use it in your desktop, tablet or mobile</p>
     </div>
+
+  <div class="col-xs-12 col-sm-4">
+    <img src="../images/icon-share-128.png" alt="" />
+    <h2>Share your opinion</h2>
+    <p>Let other people know your opinion by answering their polls or tweet your own polls to your friends</hp>
+    </div>
+ </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <h4>"{{vote.pollname}}"&nbsp&nbsp<span class="label label-danger">Featured Poll</span></h4>
+    </div>
+    <div class="panel-body">
+    <div class="col-xs-offset-2 col-sm-2">
+    </br><h4></h4>
+      <h5>Options</h5>
+      <form class="form" id="form-home-page" name="myVoteForm" >
+          <div class="radio radio-form" ng-repeat="option in vote.options track by $index">
+            <label><input type="radio" name="optionNumber" ng-model="$parent.optionNumber" ng-value="{{option.no}}"/> {{option.optionName}}
+          </div>
+        <a href="#vote/{{featured}}" class="btn btn-primary " >Get Started</a>
+     </form>
+    </div>
+    <div class="col-xs-12 col-sm-4" id="main-table">
+    <table class="table">
+      <tr>
+         <th>Option</th>
+         <th>No of Votes</th>
+      </tr>
+      <tr ng-repeat="option in vote.options">
+         <td>{{option.optionName}}</td>
+         <td>{{option.count}}</td>
+      </tr>
+    </table>
+  </div>
     <div class="col-xs-12 col-sm-4">
+    <canvas  id="pie" class="chart chart-pie" chart-legend="true" chart-data="data" chart-labels="labels"
+        ></canvas>
+    </div>
     </div>
   </div>
-</div>
-<div class="col-xs-12 col-sm-4"></div>
-</div>
+
+  <div class="row text-center">
+    <a ui-sref="app.newpoll" class="btn btn-success btn-lg btn-lg">New Poll</a>
+    <a ui-sref="app.allpolls" class="btn btn-primary btn-lg">All Polls</a>
+    <a ui-sref="app.dashboard" class="btn btn-warning btn-lg">Dashboard</a>
+  </div>
+
+  <div class="col-xs-12">
+  </div>
 </div>

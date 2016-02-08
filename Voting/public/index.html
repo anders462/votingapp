@@ -16,6 +16,7 @@
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/styles/bootstrap-social.css" rel="stylesheet">
+    <link href="/bower_components/angular-chart.js/dist/angular-chart.min.css" rel="stylesheet">
     <link href="/styles/mystyles.css" rel="stylesheet">
 <!-- endbuild -->
 
@@ -30,19 +31,34 @@
 <body>
 
    <div ui-view="header"></div>
-   <div ui-view="content"></div>
+   <div ui-view="content" ></div>
    <div ui-view="footer"></div>
 
 
 
 
 <!-- build:js scripts/main.js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/Chart.js/Chart.min.js"></script>
+    <script src="/bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="/scripts/app.js"></script>
-    <script src="/scripts/controllers.js"></script>
-    <script src="/scripts/services.js"></script>
+    <script src="/scripts/indexcontroller.js"></script>
+    <script src="/scripts/usercontroller.js"></script>
+    <script src="/scripts/userfactory.js"></script>
+    <script src="/scripts/pollcontrollers.js"></script>
+    <script src="/scripts/pollfactory.js"></script>
+
+
+
+
+
+
+
 
 
 <!-- endbuild -->

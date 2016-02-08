@@ -1,5 +1,9 @@
 
 
+(function(){
+
+'use strict';
+
 angular.module('votingApp')
 .factory('AuthService', ['$q', '$timeout', '$http', function ($q, $timeout, $http) {
 
@@ -12,12 +16,13 @@ angular.module('votingApp')
     $http.get('http://localhost:5000/auth')
       // handle success
       .success(function (data) {
-        console.log("auth: " + data.auth);
+        console.log("auth?: " + data.auth);
         deferred.resolve(data);
       })
       // handle error
       .error(function (data) {
         deferred.reject(data);
+        console.log("auth?: " + data.auth);
       });
 
     // return promise object
@@ -95,11 +100,38 @@ function register(username, password) {
 
 }
 
+function updatePassword(oldPassword,newPassword){
+  // create a new instance of deferred
+  var deferred = $q.defer();
+
+  // send a put/update request to the server
+  $http.put('http://localhost:5000/update', {oldPassword: oldPassword, newPassword: newPassword})
+    // handle success
+    .success(function (data, status) {
+      if(status === 200 && data.status){
+        deferred.resolve();
+      } else {
+        deferred.reject();
+      }
+    })
+    // handle error
+    .error(function (data) {
+      deferred.reject();
+    });
+  // return promise object
+  return deferred.promise;
+
+
+}
+
     // return available functions for use in controllers
     return ({
       isLoggedIn: isLoggedIn,  //true or false
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      updatePassword:updatePassword
     });
 }]);
+
+})();

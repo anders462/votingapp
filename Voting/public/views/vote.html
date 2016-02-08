@@ -1,0 +1,50 @@
+<div class="container">
+<div class="row text-center login-page">
+          <h3>Vote on poll:</h3></br>
+</div>
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        <h4>{{vote.pollname}}&nbsp <small>| Created by: {{vote.username}}</small></h4>
+      </div>
+      <div class="panel-body">
+      <div class="col-xs-offset-2 col-sm-2">
+      </br><h4></h4>
+        <h5>Options</h5>
+        <form class="form" id="form-home-page" name="myVoteForm" ng-submit="votePoll()">
+            <div class="radio radio-form" ng-repeat="option in vote.options track by $index">
+              <label><input type="radio" name="optionNumber" ng-model="$parent.optionNumber" ng-value="{{option.no}}"/> {{option.optionName}}
+            </div>
+            <button type="submit" class="btn btn-primary btn-md">Vote</button></br></br>
+        </form>
+            <div ng-if="isAuth">
+              <form name="form" ng-submit='newOption()'>
+                <input type="text" ng-model="newOptionForm.optionName" required/>
+                <button type="submit" class="btn btn-success btn-md" ng-disabled="disabled">Add Option</button>
+              </form>
+            </div>
+      </div>
+      <div class="col-xs-12 col-sm-4" id="main-table">
+      <table class="table">
+        <tr>
+           <th>Option</th>
+           <th># of Votes</th>
+        </tr>
+        <tr ng-repeat="option in vote.options">
+           <td>{{option.optionName}}</td>
+           <td>{{option.count}}</td>
+        </tr>
+      </table>
+    </div>
+      <div class="col-xs-12 col-sm-4">
+      <canvas  id="base" class="chart-base" chart-type="type"
+  chart-data="data" chart-labels="labels" chart-legend="true"></canvas>
+  <button type="button" class="btn btn-default btn-sm" ng-click="toggle()">Pie/Doughnut</button>
+      </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <a ui-sref="app.newpoll" class="btn btn-success btn-lg">New Poll</a>
+      <a ui-sref="app.allpolls" class="btn btn-primary btn-lg">All Polls</a>
+      <a ui-sref="app.dashboard" class="btn btn-warning btn-lg">My Polls</a>
+    </div>
+ </div>

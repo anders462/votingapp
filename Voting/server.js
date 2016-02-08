@@ -9,6 +9,7 @@ var express = require('express'),
     morgan = require('morgan'),
     path = require('path'),
     routes = require(process.cwd() + '/routes/index.js'),
+    api = require(process.cwd() + '/routes/api.js'),
     passportSetUp = require('./config/passport.js');
 
     //create express app
@@ -34,7 +35,7 @@ var express = require('express'),
     //app.use('/', routes);
 
     //set port to env.Port and 3000 as fallback
-    app.set('port', (process.env.PORT || 3000));
+    app.set('port', (process.env.PORT || 8000));
     // connect with mongo db
     mongoose.connect("mongodb://localhost:27017/votingapp");
     var db = mongoose.connection;
@@ -43,7 +44,9 @@ var express = require('express'),
       console.log('MongoDB successfully connected on port 27017.');
     });
 
+    api(app,passport);
     routes(app,passport);
+
 
     app.listen(app.get('port'), function(){
       console.log("server is running on port " + app.get('port') + "...");

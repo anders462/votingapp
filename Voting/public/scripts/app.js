@@ -1,8 +1,10 @@
+
+
+(function(){
+
 'use strict';
 
-
-
-angular.module('votingApp', ['ui.router','ngResource'])
+angular.module('votingApp', ['chart.js','ui.router','ngResource','ngAnimate'])
 .config(function($stateProvider, $urlRouterProvider) {
 
 
@@ -76,27 +78,79 @@ angular.module('votingApp', ['ui.router','ngResource'])
                 }
 
             })
-            .state('app.poll', {
-                url: 'page1',
+            // route for the settings page
+            .state('app.settings', {
+                url: 'settings',
                 views: {
                     'content@': {
-                        templateUrl : '/views/poll.html',
-                        controller  : 'PollController'
+                        templateUrl : '/views/settings.html',
+                        controller  : 'SettingsController',
+
+                    }
+                },
+                data: {
+                  authenticate: true
+                }
+
+            })
+            .state('app.newpoll', {
+                url: 'newpoll',
+                views: {
+                    'content@': {
+                        templateUrl : '/views/newpoll.html',
+                        controller  : 'NewPollController'
                         }
                     },
                 data: {
                   authenticate: true
                 }
 
+            })
+            .state('app.vote', {
+                url: 'vote/:id',
+                views: {
+                    'content@': {
+                        templateUrl : '/views/vote.html',
+                        controller  : 'VoteController'
+                        }
+                    },
+                data: {
+                  authenticate: false
+                }
+
+            })
+            .state('app.allpolls', {
+                url: 'allpolls',
+                views: {
+                    'content@': {
+                        templateUrl : '/views/allpolls.html',
+                        controller  : 'AllPollsController',
+                    }
+                },
+                data: {
+                  authenticate: false
+                }
+            })
+            .state('app.dashboard', {
+                url: 'dashboard',
+                views: {
+                    'content@': {
+                        templateUrl : '/views/dashboard.html',
+                        controller  : 'DashBoardController',
+                    }
+                },
+                data: {
+                  authenticate: true
+                }
             });
 
 
-
-        $urlRouterProvider.otherwise('/login')
+        $urlRouterProvider.otherwise('/')
     })
 
 angular.module("votingApp")
   .run(function ($rootScope, $state, AuthService) {
+    $rootScope.currentUser = localStorage.currentUser;
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
       console.log("statechange");
        AuthService.isLoggedIn()
@@ -117,3 +171,5 @@ angular.module("votingApp")
 
     });
   });
+
+})();

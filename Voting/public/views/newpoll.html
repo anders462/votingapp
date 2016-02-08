@@ -1,0 +1,38 @@
+<h2 class="text-center">My Dashboard</h2>
+<div class="container">
+<div class="row text-center">
+<div class="col-xs-12 col-sm-3">
+</div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="" ng-show="showUrl" >
+          <h3>Congratulations!</h3>
+          <h4>Your new poll has been posted to: <a class="" href="#vote/{{pollCreated.id}}">http:/localhost:5000/vote/{{pollCreated.id}}</a></h4>
+       <p>   </p>
+       </div>
+        <!-- <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div> -->
+        <form class="form" ng-show="!showUrl" name="newPollForm" ng-submit="newPoll()">
+        <h3>New Poll</h3>
+          <div class="form-group">
+            <label>Name of your Poll</label>
+            <input type="text" class="form-control" name="" ng-model="poll.pollname" placeholder="My Favorite Car" required>
+          </div>
+          <div class="form-group">
+            <label>Options</label>
+          <div ng-repeat="option in poll.options">
+              <input type="text" class="form-control" name="" ng-model="option.optionName" placeholder={{option.no}} required>
+          </div>
+          </div>
+            <div>
+              <button type="submit" class="btn btn-success" ng-disabled="disabled">Create</button>
+              <button type="button" class="btn btn-primary" ng-click="newOption()" >Add Options</button>
+              <button type="button" class="btn btn-danger" ng-click="deleteOption()">Delete Option</button>
+            </div>
+        </form>
+      </div>
+<div class="col-xs-12 col-sm-3"></div>
+</div>
+<div class="row text-center">
+</br></br><a ui-sref="app.dashboard" class="btn btn-warning btn-lg">Dashboard</a>
+  <a ui-sref="app.allpolls" class="btn btn-primary btn-lg">All Polls</a>
+</div>
+</div>

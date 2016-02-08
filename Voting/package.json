@@ -32,6 +32,7 @@
     "kerberos": "0.0.17",
     "mongodb": "^2.1.4",
     "mongoose": "^4.3.6",
+    "mongoose-sequence": "^1.0.0",
     "morgan": "^1.6.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
