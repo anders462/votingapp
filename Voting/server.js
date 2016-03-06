@@ -17,8 +17,9 @@ var express = require('express'),
     /***************************************************************************/
 /* configure CORS
 /***************************************************************************/
+/*
 app.use(function(req, res, next) {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Origin', req.headers.origin);
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Origin, Product-Session, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Referer, User-Agent');
@@ -30,7 +31,20 @@ app.use(function(req, res, next) {
   else {
     next();
   }
+}); */
+app.use(function(req, res, next) {
+res.header('Access-Control-Allow-Credentials', true);
+res.header('Access-Control-Allow-Origin', req.headers.origin);
+res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+if ('OPTIONS' == req.method) {
+     res.send(200);
+ } else {
+     next();
+ }
 });
+
+
 
     passportSetUp(passport);
     //set public and bower directory paths relative to server root
@@ -54,8 +68,8 @@ app.use(function(req, res, next) {
 
     //set port to env.Port and 3000 as fallback
     app.set('port', (process.env.PORT || 8000));
-    // connect with mongo db
-    mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost:27017/votingapp");
+    // connect with mongo db ....process.env.MONGOLAB_URI ||
+    mongoose.connect("mongodb://localhost:27017/votingapp");
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'Database failed to connect!'));
     db.once('open', function() {

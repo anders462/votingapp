@@ -8,6 +8,8 @@ module.exports = function(app,passport) {
 //register user
   app.route('/register')
   .post(function(req, res) {
+    console.log(req.body.username);
+    console.log(req.body.password);
     Account.register(new Account({ username: req.body.username }), req.body.password, function(err, account) {
       if (err) {
         return res.status(500).json({err: err});
@@ -50,6 +52,8 @@ module.exports = function(app,passport) {
 //login user
   app.route('/login')
       .post(function(req, res, next) {
+        console.log("login" + req.body.username);
+        console.log("login" + req.body.password);
       passport.authenticate('local', function(err, user, info) {
         if (err) {
           return res.status(500).json({err: err});
@@ -62,6 +66,7 @@ module.exports = function(app,passport) {
           return res.status(500).json({err: 'Could not log in user'});
           }
           res.status(200).json({status: 'Login successful!', info: user.username});
+          console.log("success");
          });
        })(req, res, next);
      });
@@ -77,6 +82,7 @@ module.exports = function(app,passport) {
      // check if user is authenticated
      app.route('/auth')
      .get(function(req, res) {
+       console.log("auth: " + req.user);
        if (req.user) {
          res.status(200).json({status: "logged in", auth: true});
       } else {
@@ -88,7 +94,7 @@ module.exports = function(app,passport) {
 
     //all other get request will result in 400 error
     app.use(function(req, res){
-        res.sendStatus(404);
+        res.status(400).json({success: false: "No such route"});
     });
 
 
