@@ -14,7 +14,9 @@ angular.module('votingApp')
     var deferred = $q.defer();
 
     // send a get request to the server
-    $http.get('https://anders-voteup.herokuapp.com/auth')
+    $http.get('http://192.168.1.70:5000/auth',{
+            withCredentials: true
+        })
       // handle success
       .success(function (data) {
         console.log("auth?: " + data.auth);
@@ -36,7 +38,7 @@ function login(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post('https://anders-voteup.herokuapp.com/login', {username: username, password: password})
+  $http.post('http://192.168.1.70:5000/login', {username: username, password: password})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
@@ -62,7 +64,7 @@ function logout() {
   var deferred = $q.defer();
 
   // send a get request to the server
-  $http.get('https://anders-voteup.herokuapp.com/logout')
+  $http.get('http://192.168.1.70:5000/logout')
     // handle success
     .success(function (data) {
       deferred.resolve();
@@ -83,7 +85,7 @@ function register(username, password) {
   var deferred = $q.defer();
 
   // send a post request to the server
-  $http.post('https://anders-voteup.herokuapp.com/register', {username: username, password: password})
+  $http.post('http://192.168.1.70:5000/register', {username: username, password: password})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){
@@ -106,7 +108,7 @@ function updatePassword(oldPassword,newPassword){
   var deferred = $q.defer();
 
   // send a put/update request to the server
-  $http.put('https://anders-voteup.herokuapp.com/update', {oldPassword: oldPassword, newPassword: newPassword})
+  $http.put('http://192.168.1.70:5000/update', {oldPassword: oldPassword, newPassword: newPassword})
     // handle success
     .success(function (data, status) {
       if(status === 200 && data.status){

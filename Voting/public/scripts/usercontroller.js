@@ -25,7 +25,6 @@ angular.module('votingApp')
                     console.log(response.info);
                     $window.localStorage.currentUser = response.info;
                     $rootScope.currentUser = localStorage.currentUser;
-                    $location.path('/');
                     $scope.disabled = false;
                     $scope.loginForm = {};
                     $location.path('/dashboard');

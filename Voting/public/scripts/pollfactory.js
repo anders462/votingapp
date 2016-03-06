@@ -6,7 +6,7 @@
 'use strict';
 
 angular.module('votingApp')
-.constant("baseUrl", "https://anders-voteup.herokuapp.com/api/poll")
+.constant("baseUrl", "http://192.168.1.70:5000/api/poll")
 .service('PollFactory', ['baseUrl', '$http', function(baseUrl, $http) {
 
 
